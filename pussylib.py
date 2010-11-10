@@ -1,4 +1,4 @@
-# commit test
+
 def init
 	os.system("ifconfig wlan0 down")
 	os.system("airmon-ng start wlan0")
