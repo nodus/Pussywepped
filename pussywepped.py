@@ -4,8 +4,7 @@ import os
 import time
 import pussylib
 
-#util funtions
-
+pussylib.
 
 #crack dat shit
 cuntin = "n"

