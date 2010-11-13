@@ -2,25 +2,23 @@
 
 import os
 import time
-import pussylib
-
-
 
 def init(): 
-	initlist= ';'.join(("airmon-ng stop mon4",
+	initlist= ';'.join(("service network-manager stop",
+		"airmon-ng stop mon4",
                 "airmon-ng stop mon3",
                 "airmon-ng stop mon2",
                 "airmon-ng stop mon1",
                 "airmon-ng stop mon0",
-                "airmon-ng stop wlan0",
-		"ifconfig wlan0 down",
-		"airmon-ng start wlan0",
-		"airmon-ng start wlan0",
+                "airmon-ng stop "+interface,
+		"ifconfig "+interface+" down",
+		"airmon-ng start "+interface,
+		"airmon-ng start "+interface,
 		"ifconfig mon0 down",
 		"ifconfig mon1 down",
 		"macchanger -r mon0",
 		"macchanger -r mon1",
-		"ifconfig wlan0 up",
+		"ifconfig "+interface+" up",
 		"ifconfig mon0 up",
 		"ifconfig mon1 up"))
 	os.system(initlist)
@@ -33,7 +31,7 @@ def housekeeping():
 		"airmon-ng stop mon2",
 		"airmon-ng stop mon1",
 		"airmon-ng stop mon0",
-		"airmon-ng stop wlan0",
+		"airmon-ng stop "+interface,
 		"service network-manager start",))
 	os.system(houselist)
 	os.sys.exit()
@@ -66,7 +64,8 @@ def aircracktest():
 
 #=========================qr=============================D
 
-
+interface = "wlan0"
+interface = raw_input("interface: ")
 init()
 scan()
 
