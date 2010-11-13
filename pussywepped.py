@@ -81,7 +81,7 @@ listen()
 
 cont = "n"
 while (cont == "n"): 
-	listen_selection = raw_input("\n 0 Change Target\n 1 Fake-auth(FAST)\n 2 De-auth\n 3 Aircrack\n 4 Aircrack(test)\n 5 Quit\n\nplease pick a number: ")
+	listen_selection = raw_input("\n 0 Change Target\n 1 Fake-auth(FAST)\n 2 ARP Replay\n 3 Aircrack\n 4 Aircrack(test)\n 5 Quit\n\nplease pick a number: ")
 	if listen_selection == "1":
 		fakeauth()
 	elif listen_selection == "2":
